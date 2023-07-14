@@ -9,7 +9,14 @@ the temperatures surrounding it, except for the temperatures at the edges of the
 plate, which are fixed.* [[1](#1)]
 
 ### What is a steady-state temperature?
-Imagine that an object has heat applied to it at various contact points, and then removed. Over time, the heat is transferred to other parts of the object. In the beginning, at each point in the object, the temperature at that point is in flux; it is changing as a function of time. Eventually, though, the temperature within the object becomes independent of time; it reaches a state where, for each point in the object, the temperature at that point is independent of time. When this has happened, the object has reached a **steady state temperature** distribution. [[2](#2)]
+Imagine that an object has heat applied to it at various contact points, and then removed. Over time, the heat is transferred to other parts of the object. In the beginning, at each point in the object, the temperature at that point is in flux; it is changing as a function of time. Eventually, though, the temperature within the object becomes independent of time; it reaches a state where, for each point in the object, the temperature at that point is independent of time. When this has happened, the object has reached a **steady-state temperature** distribution. [[2](#2)]
+
+## Solution Design
+* The problem is an application of the general Dirichlet's problem, solving which requires us to find the solution to Laplace's equation.
+* We aim for a numerical solution because an analytical solution may not exist.
+* We solve the discrete version of the problem (because it's computationally faster) using finite difference methods.
+* The solution boils down to observing that the **temperature at each point can be computed as the average of its four (north, east, south, west) neighbours**.
+* Iteratively compute this average until the temperatures converge, i.e. the difference in temperatures at any given point is below a threshold.
 
 ### Define a random walk.
 A **random walk** is a chain that is both time-homogeneous and space-homogeneous. [[2](#2)]
